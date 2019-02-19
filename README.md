@@ -18,7 +18,189 @@ Load the **creditcard.csv.gz** file and preview the data. To load a compressed c
 
 ```python
 #Your code here
+import pandas as pd
+import numpy as np
+
+import matplotlib.pyplot as plt
 ```
+
+
+```python
+df = pd.read_csv("creditcard.csv.gz", compression='gzip')
+df.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>V1</th>
+      <th>V2</th>
+      <th>V3</th>
+      <th>V4</th>
+      <th>V5</th>
+      <th>V6</th>
+      <th>V7</th>
+      <th>V8</th>
+      <th>V9</th>
+      <th>...</th>
+      <th>V21</th>
+      <th>V22</th>
+      <th>V23</th>
+      <th>V24</th>
+      <th>V25</th>
+      <th>V26</th>
+      <th>V27</th>
+      <th>V28</th>
+      <th>Amount</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>-1.359807</td>
+      <td>-0.072781</td>
+      <td>2.536347</td>
+      <td>1.378155</td>
+      <td>-0.338321</td>
+      <td>0.462388</td>
+      <td>0.239599</td>
+      <td>0.098698</td>
+      <td>0.363787</td>
+      <td>...</td>
+      <td>-0.018307</td>
+      <td>0.277838</td>
+      <td>-0.110474</td>
+      <td>0.066928</td>
+      <td>0.128539</td>
+      <td>-0.189115</td>
+      <td>0.133558</td>
+      <td>-0.021053</td>
+      <td>149.62</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>1.191857</td>
+      <td>0.266151</td>
+      <td>0.166480</td>
+      <td>0.448154</td>
+      <td>0.060018</td>
+      <td>-0.082361</td>
+      <td>-0.078803</td>
+      <td>0.085102</td>
+      <td>-0.255425</td>
+      <td>...</td>
+      <td>-0.225775</td>
+      <td>-0.638672</td>
+      <td>0.101288</td>
+      <td>-0.339846</td>
+      <td>0.167170</td>
+      <td>0.125895</td>
+      <td>-0.008983</td>
+      <td>0.014724</td>
+      <td>2.69</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>-1.358354</td>
+      <td>-1.340163</td>
+      <td>1.773209</td>
+      <td>0.379780</td>
+      <td>-0.503198</td>
+      <td>1.800499</td>
+      <td>0.791461</td>
+      <td>0.247676</td>
+      <td>-1.514654</td>
+      <td>...</td>
+      <td>0.247998</td>
+      <td>0.771679</td>
+      <td>0.909412</td>
+      <td>-0.689281</td>
+      <td>-0.327642</td>
+      <td>-0.139097</td>
+      <td>-0.055353</td>
+      <td>-0.059752</td>
+      <td>378.66</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>-0.966272</td>
+      <td>-0.185226</td>
+      <td>1.792993</td>
+      <td>-0.863291</td>
+      <td>-0.010309</td>
+      <td>1.247203</td>
+      <td>0.237609</td>
+      <td>0.377436</td>
+      <td>-1.387024</td>
+      <td>...</td>
+      <td>-0.108300</td>
+      <td>0.005274</td>
+      <td>-0.190321</td>
+      <td>-1.175575</td>
+      <td>0.647376</td>
+      <td>-0.221929</td>
+      <td>0.062723</td>
+      <td>0.061458</td>
+      <td>123.50</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.0</td>
+      <td>-1.158233</td>
+      <td>0.877737</td>
+      <td>1.548718</td>
+      <td>0.403034</td>
+      <td>-0.407193</td>
+      <td>0.095921</td>
+      <td>0.592941</td>
+      <td>-0.270533</td>
+      <td>0.817739</td>
+      <td>...</td>
+      <td>-0.009431</td>
+      <td>0.798278</td>
+      <td>-0.137458</td>
+      <td>0.141267</td>
+      <td>-0.206010</td>
+      <td>0.502292</td>
+      <td>0.219422</td>
+      <td>0.215153</td>
+      <td>69.99</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 31 columns</p>
+</div>
+
+
 
 ## Preview the class imbalance
 
@@ -28,7 +210,7 @@ Take a look at how imbalanced this dataset is.
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 ## Define the Problem
@@ -37,7 +219,7 @@ Define X and y and perform a standard train test split.
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 ## Create an initial model
@@ -46,7 +228,7 @@ As a baseline, fit a cookie cutter out of the box logistic regression model. The
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 ## Tuning 
@@ -54,7 +236,7 @@ Try some of the various techniques proposed to tune your model. Compare your mod
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 ### SMOTE
@@ -62,7 +244,7 @@ If you haven't already, try using the SMOTE class from the imblearn package in o
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 ## Analysis
@@ -162,7 +344,7 @@ plt.show()
 
 
 
-![png](index_files/index_14_1.png)
+![png](index_files/index_15_1.png)
 
 
 ## Your response here
